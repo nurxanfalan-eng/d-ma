@@ -2,10 +2,11 @@
 <html lang="az">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
   <meta name="description" content="Dümanın Süfrəsi - Nuxa 1859 - Restoran Menyusu" />
+  <meta name="theme-color" content="#0a0a0f" />
   <title>Dümanın Süfrəsi | Nuxa 1859</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet" />
   <style>
@@ -19,59 +20,68 @@
       --bg-section:#0d0d15;
       --text-primary:#f0e6cc;
       --text-secondary:#a89060;
-      --border-gold:rgba(201,168,76,0.35);
-      --shadow-gold:0 0 30px rgba(201,168,76,0.15);
+      --border-gold:rgba(201,168,76,0.3);
+      --shadow-gold:0 4px 20px rgba(201,168,76,0.12);
+      --header-h:64px;
     }
-    html{font-size:16px;scroll-behavior:auto}
+    html{font-size:16px;scroll-behavior:smooth;-webkit-text-size-adjust:100%}
     body{
       font-family:'Open Sans',sans-serif;
       background:var(--bg-dark);
       color:var(--text-primary);
       min-height:100vh;
       overflow-x:hidden;
+      line-height:1.5;
     }
 
     /* ===== HEADER ===== */
     .site-header{
-      position:fixed;top:0;left:0;right:0;z-index:1000;
-      background:rgba(10,10,15,0.97);
+      position:fixed;top:0;left:0;right:0;z-index:900;
+      background:rgba(10,10,15,0.98);
       border-bottom:1px solid var(--border-gold);
-      backdrop-filter:blur(12px);
-      -webkit-backdrop-filter:blur(12px);
+      height:var(--header-h);
+      will-change:transform;
     }
     .header-inner{
       max-width:1400px;margin:0 auto;
-      display:flex;align-items:center;justify-content:space-between;
-      padding:0 1.5rem;height:72px;
+      display:flex;align-items:center;gap:12px;
+      padding:0 1.25rem;height:100%;
     }
-    .logo-wrap{display:flex;align-items:center;gap:12px;text-decoration:none}
-    .logo-img{width:52px;height:52px;object-fit:contain;border-radius:50%}
-    .logo-text{display:flex;flex-direction:column;line-height:1.1}
+    .logo-wrap{
+      display:flex;align-items:center;gap:10px;
+      text-decoration:none;flex-shrink:0;
+    }
+    .logo-img{
+      width:44px;height:44px;
+      object-fit:cover;border-radius:50%;
+      border:2px solid var(--gold);
+    }
+    .logo-text{display:flex;flex-direction:column;line-height:1.15}
     .logo-title{
-      font-family:'Cinzel',serif;font-size:1.1rem;font-weight:700;
-      color:var(--gold);letter-spacing:.06em;
+      font-family:'Cinzel',serif;font-size:1rem;font-weight:700;
+      color:var(--gold);letter-spacing:.05em;
     }
-    .logo-sub{font-size:.65rem;color:var(--text-secondary);letter-spacing:.15em;text-transform:uppercase}
+    .logo-sub{font-size:.6rem;color:var(--text-secondary);letter-spacing:.14em;text-transform:uppercase}
 
-    /* ===== NAV TABS ===== */
-    .nav-tabs-outer{
-      flex:1;display:flex;justify-content:center;
-      overflow:hidden;padding:0 1rem;
-    }
-    .nav-tabs{
-      display:flex;gap:4px;
-      overflow-x:auto;-webkit-overflow-scrolling:touch;
+    /* ===== NAV ===== */
+    .nav-scroll{
+      flex:1;overflow-x:auto;-webkit-overflow-scrolling:touch;
       scrollbar-width:none;
     }
-    .nav-tabs::-webkit-scrollbar{display:none}
+    .nav-scroll::-webkit-scrollbar{display:none}
+    .nav-tabs{
+      display:flex;gap:3px;min-width:max-content;
+      padding:4px 0;
+    }
     .nav-tab{
       flex-shrink:0;
       background:none;border:1px solid transparent;
       color:var(--text-secondary);
-      font-family:'Cinzel',serif;font-size:.7rem;font-weight:600;
-      letter-spacing:.06em;text-transform:uppercase;
-      padding:.45rem .75rem;border-radius:6px;
-      cursor:pointer;transition:all .25s;white-space:nowrap;
+      font-family:'Cinzel',serif;font-size:.68rem;font-weight:600;
+      letter-spacing:.05em;text-transform:uppercase;
+      padding:.38rem .7rem;border-radius:5px;
+      cursor:pointer;transition:color .2s,border-color .2s,background .2s;
+      white-space:nowrap;
     }
     .nav-tab:hover{color:var(--gold);border-color:var(--border-gold)}
     .nav-tab.active{
@@ -79,208 +89,244 @@
       background:rgba(201,168,76,0.1);
       border-color:var(--gold);
     }
-    .header-right{font-family:'Cinzel',serif;font-size:.65rem;color:var(--text-secondary);white-space:nowrap}
 
     /* ===== MAIN ===== */
-    .main-wrap{
-      padding-top:72px;
-      min-height:100vh;
-    }
+    .main-wrap{padding-top:var(--header-h);min-height:100vh}
 
-    /* ===== HERO SECTION ===== */
-    .hero{
-      text-align:center;
-      padding:3rem 1.5rem 2rem;
-      background:linear-gradient(180deg,rgba(201,168,76,.05) 0%,transparent 100%);
-      border-bottom:1px solid var(--border-gold);
-    }
-    .hero-logo{
-      width:120px;height:120px;border-radius:50%;
-      border:3px solid var(--gold);
-      box-shadow:0 0 40px rgba(201,168,76,.3);
-      margin-bottom:1.2rem;object-fit:contain;
-    }
-    .hero h1{
-      font-family:'Cinzel',serif;font-size:clamp(1.6rem,4vw,2.8rem);
-      font-weight:700;color:var(--gold);letter-spacing:.08em;
-      text-shadow:0 0 30px rgba(201,168,76,.4);
-    }
-    .hero p{font-size:.9rem;color:var(--text-secondary);margin-top:.5rem;letter-spacing:.12em}
-
-    /* ===== SECTION PANEL ===== */
+    /* ===== PANELS ===== */
     .section-panel{display:none}
     .section-panel.active{display:block}
+
+    /* ===== HERO (Ana Səhifə) ===== */
+    .hero{
+      display:flex;flex-direction:column;align-items:center;
+      justify-content:center;
+      min-height:calc(100vh - var(--header-h));
+      padding:3rem 1.5rem;
+      background:radial-gradient(ellipse at center top, rgba(201,168,76,.06) 0%, transparent 70%);
+      text-align:center;
+    }
+    .hero-logo-wrap{
+      position:relative;
+      width:180px;height:180px;
+      margin-bottom:2rem;
+    }
+    .hero-logo-glow{
+      position:absolute;inset:-12px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(201,168,76,.18) 0%, transparent 70%);
+      animation:pulse 3s ease-in-out infinite;
+    }
+    .hero-logo{
+      width:100%;height:100%;
+      object-fit:cover;
+      border-radius:50%;
+      border:3px solid var(--gold);
+      position:relative;z-index:1;
+    }
+    @keyframes pulse{
+      0%,100%{opacity:.6;transform:scale(1)}
+      50%{opacity:1;transform:scale(1.05)}
+    }
+    .hero-title{
+      font-family:'Cinzel',serif;
+      font-size:clamp(1.8rem,5vw,3.2rem);
+      font-weight:700;color:var(--gold);
+      letter-spacing:.1em;
+      text-shadow:0 0 40px rgba(201,168,76,.35);
+      margin-bottom:.5rem;
+    }
+    .hero-sub{
+      font-size:.88rem;color:var(--text-secondary);
+      letter-spacing:.18em;text-transform:uppercase;
+      margin-bottom:2rem;
+    }
+    .hero-divider{
+      width:120px;height:1px;
+      background:linear-gradient(90deg,transparent,var(--gold),transparent);
+      margin:0 auto 2rem;
+    }
+    .hero-desc{
+      max-width:520px;
+      font-size:.9rem;color:var(--text-secondary);
+      line-height:1.85;margin-bottom:2.5rem;
+    }
+    .hero-cats{
+      display:flex;flex-wrap:wrap;justify-content:center;gap:.6rem;
+      max-width:640px;
+    }
+    .hero-cat-btn{
+      background:rgba(201,168,76,.08);
+      border:1px solid var(--border-gold);
+      color:var(--text-primary);
+      font-family:'Cinzel',serif;font-size:.72rem;font-weight:600;
+      letter-spacing:.06em;text-transform:uppercase;
+      padding:.45rem 1rem;border-radius:6px;
+      cursor:pointer;transition:all .2s;
+    }
+    .hero-cat-btn:hover{
+      background:rgba(201,168,76,.18);
+      border-color:var(--gold);color:var(--gold);
+    }
+
+    /* ===== SECTION PAGE ===== */
     .section-content{
-      max-width:1400px;margin:0 auto;
-      padding:2rem 1.5rem 4rem;
+      max-width:1200px;margin:0 auto;
+      padding:2.5rem 1.25rem 4rem;
     }
     .section-heading{
-      font-family:'Cinzel',serif;font-size:clamp(1.3rem,3vw,2rem);
+      font-family:'Cinzel',serif;
+      font-size:clamp(1.2rem,3vw,1.8rem);
       font-weight:700;color:var(--gold);
-      text-align:center;margin-bottom:.4rem;
+      text-align:center;margin-bottom:.3rem;
       letter-spacing:.1em;text-transform:uppercase;
     }
-    .section-sub{
-      text-align:center;font-size:.78rem;
-      color:var(--text-secondary);letter-spacing:.15em;
-      text-transform:uppercase;margin-bottom:2.5rem;
+    .section-sub-lbl{
+      text-align:center;font-size:.72rem;
+      color:var(--text-secondary);letter-spacing:.18em;
+      text-transform:uppercase;margin-bottom:.6rem;
     }
-    .divider{
-      width:80px;height:2px;
+    .section-divider{
+      width:80px;height:1px;
       background:linear-gradient(90deg,transparent,var(--gold),transparent);
-      margin:1rem auto 2.5rem;
+      margin:.8rem auto 2rem;
     }
 
-    /* ===== MENU GRID ===== */
-    .menu-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
-      gap:1.5rem;
+    /* ===== MENU LIST ===== */
+    .menu-list{
+      display:flex;flex-direction:column;gap:0;
     }
-
-    /* ===== MENU CARD ===== */
-    .menu-card{
-      background:var(--bg-card);
-      border:1px solid var(--border-gold);
-      border-radius:14px;
-      overflow:hidden;
+    .menu-row{
+      display:flex;align-items:center;
+      border-bottom:1px solid rgba(201,168,76,.12);
+      padding:1rem 0;
       cursor:pointer;
-      transition:transform .25s,box-shadow .25s,border-color .25s;
-      position:relative;
+      transition:background .18s;
+      border-radius:6px;
+      padding-left:.75rem;padding-right:.75rem;
     }
-    .menu-card:hover{
-      transform:translateY(-5px);
-      box-shadow:0 15px 40px rgba(201,168,76,.2);
-      border-color:var(--gold);
-    }
-    .card-img-wrap{
-      width:100%;aspect-ratio:4/3;overflow:hidden;
-      position:relative;background:#1a1a25;
-    }
-    .card-img-wrap img{
-      width:100%;height:100%;object-fit:cover;
-      transition:transform .4s;
-      loading:lazy;
-    }
-    .menu-card:hover .card-img-wrap img{transform:scale(1.07)}
-    .card-badge{
-      position:absolute;top:10px;right:10px;
-      background:rgba(201,168,76,.9);
-      color:#000;font-weight:700;font-size:.72rem;
-      padding:.25rem .6rem;border-radius:20px;
-      font-family:'Cinzel',serif;letter-spacing:.04em;
-    }
-    .card-body{padding:1rem 1.1rem 1.1rem}
-    .card-name{
-      font-family:'Cinzel',serif;font-size:.9rem;font-weight:700;
-      color:var(--text-primary);margin-bottom:.25rem;
-      letter-spacing:.04em;line-height:1.3;
-    }
-    .card-desc{
-      font-size:.72rem;color:var(--text-secondary);
-      line-height:1.5;margin-bottom:.7rem;min-height:2.2em;
-    }
-    .card-footer{
-      display:flex;align-items:center;justify-content:space-between;
-      border-top:1px solid var(--border-gold);padding-top:.7rem;
-    }
-    .card-price{
-      font-family:'Cinzel',serif;font-size:1rem;font-weight:700;color:var(--gold);
-    }
-    .card-btn{
-      font-size:.65rem;font-weight:600;
-      color:var(--gold);letter-spacing:.08em;text-transform:uppercase;
+    .menu-row:first-child{border-top:1px solid rgba(201,168,76,.12)}
+    .menu-row:hover{background:rgba(201,168,76,.05)}
+    .menu-row-img{
+      width:72px;height:56px;
+      flex-shrink:0;
+      border-radius:8px;
+      overflow:hidden;
       border:1px solid var(--border-gold);
-      background:none;border-radius:20px;
-      padding:.3rem .8rem;cursor:pointer;transition:all .2s;
+      margin-right:1rem;
     }
-    .card-btn:hover{background:rgba(201,168,76,.15);border-color:var(--gold)}
+    .menu-row-img img{
+      width:100%;height:100%;
+      object-fit:cover;
+      display:block;
+    }
+    .menu-row-body{flex:1;min-width:0}
+    .menu-row-name{
+      font-family:'Cinzel',serif;font-size:.88rem;font-weight:700;
+      color:var(--text-primary);
+      white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+      margin-bottom:.18rem;
+    }
+    .menu-row-desc{
+      font-size:.72rem;color:var(--text-secondary);
+      white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+    }
+    .menu-row-right{
+      flex-shrink:0;margin-left:1rem;
+      text-align:right;
+    }
+    .menu-row-price{
+      font-family:'Cinzel',serif;font-size:.95rem;
+      font-weight:700;color:var(--gold);
+      white-space:nowrap;
+    }
+    .row-badge{
+      display:inline-block;
+      font-size:.6rem;font-weight:700;
+      padding:.15rem .45rem;border-radius:10px;
+      margin-top:.25rem;
+    }
+    .badge-special{background:rgba(100,160,220,.85);color:#fff}
+    .badge-veg{background:rgba(60,170,60,.85);color:#fff}
 
     /* ===== MODAL ===== */
     .modal-overlay{
-      position:fixed;inset:0;z-index:2000;
-      background:rgba(0,0,0,.85);
-      display:flex;align-items:center;justify-content:center;
-      padding:1rem;
+      position:fixed;inset:0;z-index:1000;
+      background:rgba(0,0,0,.82);
+      display:flex;align-items:flex-end;justify-content:center;
+      padding:0;
       opacity:0;pointer-events:none;
-      transition:opacity .25s;
+      transition:opacity .22s;
     }
     .modal-overlay.open{opacity:1;pointer-events:all}
     .modal-box{
       background:var(--bg-card);
       border:1px solid var(--gold);
-      border-radius:18px;
-      width:100%;max-width:500px;
-      max-height:90vh;overflow-y:auto;
+      border-radius:18px 18px 0 0;
+      width:100%;max-width:520px;
+      max-height:88vh;overflow-y:auto;
       scrollbar-width:thin;scrollbar-color:var(--gold) transparent;
-      transform:translateY(20px) scale(.97);
-      transition:transform .25s;
+      transform:translateY(100%);
+      transition:transform .28s cubic-bezier(.22,.61,.36,1);
       position:relative;
     }
-    .modal-overlay.open .modal-box{transform:translateY(0) scale(1)}
-    .modal-img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:18px 18px 0 0}
-    .modal-body{padding:1.5rem}
+    .modal-overlay.open .modal-box{transform:translateY(0)}
+    .modal-drag{
+      width:40px;height:4px;
+      background:var(--border-gold);
+      border-radius:2px;
+      margin:10px auto 0;
+    }
+    .modal-img{
+      width:100%;aspect-ratio:4/3;
+      object-fit:cover;
+    }
+    .modal-body{padding:1.25rem 1.4rem 1.6rem}
     .modal-cat{
-      font-size:.65rem;color:var(--text-secondary);
-      letter-spacing:.15em;text-transform:uppercase;margin-bottom:.4rem;
+      font-size:.62rem;color:var(--text-secondary);
+      letter-spacing:.15em;text-transform:uppercase;margin-bottom:.35rem;
     }
     .modal-name{
-      font-family:'Cinzel',serif;font-size:1.3rem;font-weight:700;
-      color:var(--gold);margin-bottom:.6rem;line-height:1.3;
+      font-family:'Cinzel',serif;font-size:1.2rem;font-weight:700;
+      color:var(--gold);margin-bottom:.55rem;line-height:1.3;
     }
-    .modal-desc{font-size:.85rem;color:var(--text-secondary);line-height:1.7;margin-bottom:1rem}
+    .modal-desc{font-size:.82rem;color:var(--text-secondary);line-height:1.75;margin-bottom:1rem}
     .modal-price-row{
       display:flex;align-items:center;justify-content:space-between;
-      border-top:1px solid var(--border-gold);padding-top:1rem;
+      border-top:1px solid var(--border-gold);padding-top:.9rem;
     }
-    .modal-price-label{font-size:.75rem;color:var(--text-secondary);letter-spacing:.1em;text-transform:uppercase}
-    .modal-price-val{font-family:'Cinzel',serif;font-size:1.5rem;font-weight:700;color:var(--gold)}
+    .modal-price-label{font-size:.7rem;color:var(--text-secondary);letter-spacing:.1em;text-transform:uppercase}
+    .modal-price-val{font-family:'Cinzel',serif;font-size:1.4rem;font-weight:700;color:var(--gold)}
     .modal-close{
-      position:absolute;top:1rem;right:1rem;
-      width:36px;height:36px;border-radius:50%;
-      background:rgba(0,0,0,.6);border:1px solid var(--border-gold);
-      color:var(--text-primary);font-size:1.1rem;
+      position:absolute;top:.75rem;right:.75rem;
+      width:32px;height:32px;border-radius:50%;
+      background:rgba(0,0,0,.55);border:1px solid var(--border-gold);
+      color:var(--text-primary);font-size:1rem;
       display:flex;align-items:center;justify-content:center;
-      cursor:pointer;transition:all .2s;z-index:1;
+      cursor:pointer;transition:all .18s;z-index:2;
     }
     .modal-close:hover{background:rgba(201,168,76,.2);border-color:var(--gold)}
 
-    /* ===== SCROLL INDICATOR ===== */
-    .scroll-hint{
-      text-align:center;padding:.5rem;
-      font-size:.65rem;color:var(--text-secondary);
-      letter-spacing:.1em;
-    }
-
-    /* ===== RESPONSIVE ===== */
-    @media(max-width:768px){
-      .header-inner{padding:0 1rem}
-      .header-right{display:none}
-      .logo-title{font-size:.95rem}
-      .nav-tabs-outer{padding:0 .5rem}
-      .nav-tab{font-size:.6rem;padding:.4rem .55rem}
-      .menu-grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:1rem}
-      .section-content{padding:1.5rem 1rem 3rem}
-      .hero{padding:2rem 1rem 1.5rem}
-      .hero-logo{width:90px;height:90px}
-    }
-    @media(max-width:400px){
-      .menu-grid{grid-template-columns:1fr 1fr;gap:.8rem}
-      .card-body{padding:.75rem .8rem .8rem}
-      .card-name{font-size:.78rem}
-    }
-    @media(min-width:1200px){
-      .menu-grid{grid-template-columns:repeat(auto-fill,minmax(280px,1fr))}
-    }
-
-    /* ===== SPECIAL BADGE ===== */
-    .badge-special{background:rgba(100,160,220,.9);color:#fff}
-    .badge-veg{background:rgba(80,180,80,.9);color:#fff}
-
-    /* ===== SCROLLBAR ===== */
-    ::-webkit-scrollbar{width:6px;height:6px}
+    /* ===== SCROLLBARS ===== */
+    ::-webkit-scrollbar{width:5px;height:5px}
     ::-webkit-scrollbar-track{background:var(--bg-dark)}
     ::-webkit-scrollbar-thumb{background:var(--gold-dark);border-radius:3px}
+
+    /* ===== RESPONSIVE ===== */
+    @media(max-width:600px){
+      :root{--header-h:58px}
+      .logo-title{font-size:.88rem}
+      .nav-tab{font-size:.6rem;padding:.32rem .55rem}
+      .menu-row-img{width:60px;height:48px}
+      .menu-row-name{font-size:.8rem}
+      .hero-logo-wrap{width:150px;height:150px}
+      .section-content{padding:2rem 1rem 3rem}
+    }
+    @media(min-width:768px){
+      .modal-overlay{align-items:center}
+      .modal-box{border-radius:18px;transform:translateY(20px) scale(.97)}
+      .modal-overlay.open .modal-box{transform:translateY(0) scale(1)}
+    }
   </style>
 </head>
 <body>
@@ -288,134 +334,137 @@
 <!-- HEADER -->
 <header class="site-header">
   <div class="header-inner">
-    <a class="logo-wrap" href="javascript:void(0)" onclick="showSection('home')">
-      <img class="logo-img" src="https://www.genspark.ai/api/files/s/MdIMfsdT" alt="Dümanın Süfrəsi Logo" />
+    <a class="logo-wrap" href="javascript:void(0)" onclick="showSection('home')" aria-label="Ana Səhifə">
+      <img class="logo-img" src="images/logo.png" alt="Dümanın Süfrəsi" width="44" height="44" />
       <div class="logo-text">
         <span class="logo-title">Dümanın Süfrəsi</span>
         <span class="logo-sub">Nuxa · 1859</span>
       </div>
     </a>
-    <nav class="nav-tabs-outer" aria-label="Menyu bölmələri">
-      <div class="nav-tabs" id="navTabs">
-        <button class="nav-tab active" data-section="home">Ana Səhifə</button>
-        <button class="nav-tab" data-section="seher">Səhər Yeməyi</button>
-        <button class="nav-tab" data-section="salatlar">Salatlar</button>
-        <button class="nav-tab" data-section="suplar">Suplar</button>
-        <button class="nav-tab" data-section="qarnirler">Qarnilər</button>
-        <button class="nav-tab" data-section="qazan">Qazan Yeməkləri</button>
-        <button class="nav-tab" data-section="et">Ət Yeməkləri</button>
-        <button class="nav-tab" data-section="xemir">Xəmir Yeməkləri</button>
-        <button class="nav-tab" data-section="kabablar">Kabablar</button>
+    <nav class="nav-scroll" aria-label="Menyu bölmələri">
+      <div class="nav-tabs" id="navTabs" role="tablist">
+        <button class="nav-tab active" data-section="home" role="tab" aria-selected="true">Ana Səhifə</button>
+        <button class="nav-tab" data-section="seher" role="tab" aria-selected="false">Səhər Yeməyi</button>
+        <button class="nav-tab" data-section="salatlar" role="tab" aria-selected="false">Salatlar</button>
+        <button class="nav-tab" data-section="suplar" role="tab" aria-selected="false">Suplar</button>
+        <button class="nav-tab" data-section="qarnirler" role="tab" aria-selected="false">Qarnilər</button>
+        <button class="nav-tab" data-section="qazan" role="tab" aria-selected="false">Qazan Yeməkləri</button>
+        <button class="nav-tab" data-section="et" role="tab" aria-selected="false">Ət Yeməkləri</button>
+        <button class="nav-tab" data-section="xemir" role="tab" aria-selected="false">Xəmir Yeməkləri</button>
+        <button class="nav-tab" data-section="kabablar" role="tab" aria-selected="false">Kabablar</button>
       </div>
     </nav>
-    <div class="header-right">Nuxa · 1859</div>
   </div>
 </header>
 
 <div class="main-wrap">
 
-  <!-- HOME / HERO -->
-  <section class="section-panel active" id="panel-home">
+  <!-- ANA SƏHİFƏ -->
+  <section class="section-panel active" id="panel-home" role="tabpanel">
     <div class="hero">
-      <img class="hero-logo" src="https://www.genspark.ai/api/files/s/MdIMfsdT" alt="Logo" />
-      <h1>Dümanın Süfrəsi</h1>
-      <p>Nuxa · 1859 · Ənənəvi Azərbaycan Mətbəxi</p>
-    </div>
-    <div class="section-content">
-      <p style="text-align:center;color:var(--text-secondary);font-size:.9rem;max-width:600px;margin:0 auto 2.5rem;line-height:1.8;">
-        1859-cu ildən bəri Nuxa'nın ənənəvi dadlarını sizə təqdim edirik. Yuxarıdakı bölmələrdən istənilən menyuya keçid edə bilərsiniz.
+      <div class="hero-logo-wrap">
+        <div class="hero-logo-glow"></div>
+        <img class="hero-logo" src="images/logo.png" alt="Dümanın Süfrəsi Logo" width="180" height="180" />
+      </div>
+      <h1 class="hero-title">Dümanın Süfrəsi</h1>
+      <p class="hero-sub">Nuxa · 1859</p>
+      <div class="hero-divider"></div>
+      <p class="hero-desc">
+        1859-cu ildən bəri Nuxa'nın ənənəvi dadlarını sizə təqdim edirik.<br>
+        Yuxarıdakı bölmələrdən istənilən menyuya keçid edə bilərsiniz.
       </p>
-      <div class="menu-grid" id="home-grid"></div>
+      <div class="hero-cats" id="heroCats"></div>
     </div>
   </section>
 
   <!-- SƏHƏR YEMƏYİ -->
-  <section class="section-panel" id="panel-seher">
+  <section class="section-panel" id="panel-seher" role="tabpanel">
     <div class="section-content">
       <h2 class="section-heading">Səhər Yeməyi</h2>
-      <p class="section-sub">Breakfast</p>
-      <div class="divider"></div>
-      <div class="menu-grid" id="grid-seher"></div>
+      <p class="section-sub-lbl">Breakfast</p>
+      <div class="section-divider"></div>
+      <div class="menu-list" id="grid-seher"></div>
     </div>
   </section>
 
   <!-- SALATLAR -->
-  <section class="section-panel" id="panel-salatlar">
+  <section class="section-panel" id="panel-salatlar" role="tabpanel">
     <div class="section-content">
       <h2 class="section-heading">Salatlar</h2>
-      <p class="section-sub">Salads</p>
-      <div class="divider"></div>
-      <div class="menu-grid" id="grid-salatlar"></div>
+      <p class="section-sub-lbl">Salads</p>
+      <div class="section-divider"></div>
+      <div class="menu-list" id="grid-salatlar"></div>
     </div>
   </section>
 
   <!-- SUPLAR -->
-  <section class="section-panel" id="panel-suplar">
+  <section class="section-panel" id="panel-suplar" role="tabpanel">
     <div class="section-content">
       <h2 class="section-heading">Suplar</h2>
-      <p class="section-sub">Soups</p>
-      <div class="divider"></div>
-      <div class="menu-grid" id="grid-suplar"></div>
+      <p class="section-sub-lbl">Soups</p>
+      <div class="section-divider"></div>
+      <div class="menu-list" id="grid-suplar"></div>
     </div>
   </section>
 
   <!-- QARNİRLƏR -->
-  <section class="section-panel" id="panel-qarnirler">
+  <section class="section-panel" id="panel-qarnirler" role="tabpanel">
     <div class="section-content">
       <h2 class="section-heading">Qarnilər</h2>
-      <p class="section-sub">Side Dishes</p>
-      <div class="divider"></div>
-      <div class="menu-grid" id="grid-qarnirler"></div>
+      <p class="section-sub-lbl">Side Dishes</p>
+      <div class="section-divider"></div>
+      <div class="menu-list" id="grid-qarnirler"></div>
     </div>
   </section>
 
   <!-- QAZAN YEMƏKLƏRİ -->
-  <section class="section-panel" id="panel-qazan">
+  <section class="section-panel" id="panel-qazan" role="tabpanel">
     <div class="section-content">
       <h2 class="section-heading">Qazan Yeməkləri</h2>
-      <p class="section-sub">Traditional Pot Meals</p>
-      <div class="divider"></div>
-      <div class="menu-grid" id="grid-qazan"></div>
+      <p class="section-sub-lbl">Traditional Pot Meals</p>
+      <div class="section-divider"></div>
+      <div class="menu-list" id="grid-qazan"></div>
     </div>
   </section>
 
   <!-- ƏT YEMƏKLƏRİ -->
-  <section class="section-panel" id="panel-et">
+  <section class="section-panel" id="panel-et" role="tabpanel">
     <div class="section-content">
       <h2 class="section-heading">Ət Yeməkləri</h2>
-      <p class="section-sub">Main Meat Dishes</p>
-      <div class="divider"></div>
-      <div class="menu-grid" id="grid-et"></div>
+      <p class="section-sub-lbl">Main Meat Dishes</p>
+      <div class="section-divider"></div>
+      <div class="menu-list" id="grid-et"></div>
     </div>
   </section>
 
   <!-- XƏMİR YEMƏKLƏRİ -->
-  <section class="section-panel" id="panel-xemir">
+  <section class="section-panel" id="panel-xemir" role="tabpanel">
     <div class="section-content">
       <h2 class="section-heading">Xəmir Yeməkləri</h2>
-      <p class="section-sub">Dough / National Meals</p>
-      <div class="divider"></div>
-      <div class="menu-grid" id="grid-xemir"></div>
+      <p class="section-sub-lbl">Dough / National Meals</p>
+      <div class="section-divider"></div>
+      <div class="menu-list" id="grid-xemir"></div>
     </div>
   </section>
 
   <!-- KABABLAR -->
-  <section class="section-panel" id="panel-kabablar">
+  <section class="section-panel" id="panel-kabablar" role="tabpanel">
     <div class="section-content">
       <h2 class="section-heading">Kabablar</h2>
-      <p class="section-sub">Kebabs</p>
-      <div class="divider"></div>
-      <div class="menu-grid" id="grid-kabablar"></div>
+      <p class="section-sub-lbl">Kebabs</p>
+      <div class="section-divider"></div>
+      <div class="menu-list" id="grid-kabablar"></div>
     </div>
   </section>
 
-</div><!-- /main-wrap -->
+</div>
 
 <!-- MODAL -->
 <div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalName">
   <div class="modal-box" id="modalBox">
+    <div class="modal-drag"></div>
     <button class="modal-close" id="modalClose" aria-label="Bağla">✕</button>
-    <img id="modalImg" class="modal-img" src="" alt="" />
+    <img id="modalImg" class="modal-img" src="" alt="" width="520" height="390" />
     <div class="modal-body">
       <div class="modal-cat" id="modalCat"></div>
       <div class="modal-name" id="modalName"></div>
@@ -429,215 +478,182 @@
 </div>
 
 <script>
-// ============================================================
-// MENU DATA
-// All items share the same food image as per requirements
-// ============================================================
-const FOOD_IMG = "https://www.genspark.ai/api/files/s/TI88XhXR";
+'use strict';
 
+/* ── IMAGE PATH (local) ─────────────────────────── */
+const FOOD_IMG = 'images/food.jpg';
+const LOGO_IMG = 'images/logo.png';
+
+/* ── MENU DATA ──────────────────────────────────── */
 const MENU = {
-  seher: {
-    label: "Səhər Yeməyi",
-    sub: "Breakfast",
-    items: [
-      {name:"Təbii Dağ Balı",desc:"Ev hazırlanmış Təbii Bal (50 QR.)\nHomemade Natural Honey",price:"5.00 ₼",badge:""},
-      {name:"Kərə Yağı",desc:"Ev hazırlanmış Kərə Yağı 50 gr. (50 QR.)\nHomemade Natural Butter 50 gr.",price:"3.00 ₼",badge:""},
-      {name:"Pendir",desc:"Təbii Pendir\nNatural Cheese",price:"3.00 ₼",badge:""},
-      {name:"Qarışıq Pendir",desc:"Müxtəlif növ pendirlər\nAssorted Pickles",price:"6.00 ₼",badge:""},
-      {name:"Ev Qaymağı",desc:"Ev hazırlanmış Qaymaq (50 QR.)\nHomemade Clotted Cream",price:"3.00 ₼",badge:""},
-      {name:"Kənd Şoru",desc:"Ev hazırlanmış Lor Pendiri\nHomemade Curd Cheese",price:"2.00 ₼",badge:""},
-      {name:"Soyutma Yumurta",desc:"Bişmiş Yumurta\nBoiled Egg",price:"1.00 ₼",badge:""},
-      {name:"\"Qlazok\" Yumurta",desc:"\"Qlazok\" Qızardılmış Yumurta\n\"Qlazok\" Fried Egg",price:"2.00 ₼",badge:""},
-      {name:"Pomidor Yumurta",desc:"Pomidor və Yumurta\nTomato & Egg",price:"5.00 ₼",badge:""},
-      {name:"Sosis Yumurta",desc:"Sosis ilə Yumurta\nEgg with Sausage",price:"5.00 ₼",badge:""},
-      {name:"Sosis Manqal Üstü",desc:"Manqalda bişirilmiş sosis\nGrilled Sausage",price:"4.00 ₼",badge:""},
-      {name:"Yulaf Sıyığı",desc:"Yulaf Sıyığı (Kaşa)\nOat Porridge",price:"4.00 ₼",badge:""},
-    ]
-  },
-  salatlar: {
-    label: "Salatlar",
-    sub: "Salads",
-    items: [
-      {name:"Döymə Zoğal",desc:"Döyülmüş Zoğal\nCrushed Cornelian Cherry",price:"4.00 ₼",badge:""},
-      {name:"Döymə Vişnə",desc:"Döyülmüş Turş Albalı\nCrushed Sour Cherry Relish",price:"5.00 ₼",badge:""},
-      {name:"Qarğıdalı Salatı",desc:"Qarğıdalı Salatı\nCorn Salad",price:"6.00 ₼",badge:""},
-      {name:"Yunan Salatı",desc:"Yunan Salatı\nGreek Salad",price:"6.00 ₼",badge:""},
-      {name:"Zeytun Salatı",desc:"Zeytun Salatı\nOlive Salad",price:"5.00 ₼",badge:""},
-      {name:"Malibu Salatı",desc:"Malibu Salatı\nMalibu Salad",price:"7.00 ₼",badge:""},
-      {name:"Cacıq",desc:"Cacıq\nCacik",price:"4.00 ₼",badge:""},
-      {name:"\"Paytaxt\" Salatı",desc:"Rus Salatı \"Stolichniy\"\nRussian Salad \"Stolichniy\"",price:"4.00 ₼",badge:"Xüsusi"},
-      {name:"\"Mimoza\" Salatı",desc:"Rus Salatı \"Mimoza\"\nRussian Salad \"Mimoza\"",price:"4.00 ₼",badge:"Xüsusi"},
-      {name:"\"Şuba\" Salatı",desc:"Rus Salatı \"Şuba\"\nRussian Salad \"Shuba\"",price:"5.00 ₼",badge:"Xüsusi"},
-      {name:"Düma Salatı",desc:"Düma Salatı\nDuma Salad",price:"5.00 ₼",badge:"Xüsusi"},
-    ]
-  },
-  suplar: {
-    label: "Suplar",
-    sub: "Soups",
-    items: [
-      {name:"Mərci",desc:"Mərcimək Şorbası\nLentil Soup",price:"4.00 ₼",badge:""},
-      {name:"Toyuq Supu",desc:"Toyuq Şorbası\nChicken Soup",price:"5.00 ₼",badge:""},
-      {name:"Borş",desc:"Borş Şorbası\nBorscht",price:"5.00 ₼",badge:""},
-      {name:"Düşbərə",desc:"Düşbərə\nDushbora",price:"5.00 ₼",badge:""},
-      {name:"Lobya Supu",desc:"Qaxacla Lobya Şorbası\nBean Soup (with dried meat)",price:"7.00 ₼",badge:""},
-      {name:"Xarco",desc:"Xarco Şorbası\nKharcho Soup",price:"8.00 ₼",badge:""},
-      {name:"Dovğa",desc:"Dovğa\nDovga",price:"2.50 ₼",badge:""},
-    ]
-  },
-  qarnirler: {
-    label: "Qarnilər",
-    sub: "Side Dishes",
-    items: [
-      {name:"Düyü",desc:"Düyü\nRice",price:"3.00 ₼",badge:""},
-      {name:"Qreçka",desc:"Qarabaşaq Püresi\nBuckwheat Porridge",price:"2.00 ₼",badge:""},
-      {name:"Kartof",desc:"Qızartma / Püre\nFrench Fries / Mashed Potatoes",price:"4.00 ₼",badge:""},
-      {name:"Spagetti",desc:"Spagetti\nSpaghetti",price:"4.00 ₼",badge:""},
-      {name:"Qarabaşaq",desc:"Bişmiş Qarabaşaq\nBoiled Buckwheat",price:"3.00 ₼",badge:""},
-    ]
-  },
-  qazan: {
-    label: "Qazan Yeməkləri",
-    sub: "Traditional Pot Meals",
-    items: [
-      {name:"Piti",desc:"Piti\nPiti",price:"8.00 ₼",badge:""},
-      {name:"Buğlama",desc:"Buğlama\nBughlama",price:"7.00 ₼",badge:""},
-      {name:"Dopu Dolma",desc:"Qazanda Dolma\nDolma in Pot",price:"7.00 ₼",badge:""},
-      {name:"\"Tuşonka\"",desc:"Mal Ətindən Konserv Şəklində Bişirilmiş\n\"Tushonka\" (canned stewed meat)",price:"9.00 ₼",badge:""},
-      {name:"Ciz-Biz Quzu",desc:"Quzunun Qovrulması\nSizzling Lamb Fry",price:"8.00 ₼",badge:""},
-      {name:"Qaymaqlı Toyuq",desc:"Qaymaq Sousunda Toyuq\nChicken in Cream Sauce",price:"7.00 ₼",badge:""},
-      {name:"Qaymaqlı Can Əti",desc:"Qaymaq Sousunda Tenderloin\nTenderloin in Cream Sauce",price:"6.00 ₼",badge:""},
-      {name:"Tava Kababi",desc:"Tava Kabab\nPan Kebab",price:"6.00 ₼",badge:""},
-      {name:"Nar Qovurma (Toyuq)",desc:"Nar Qovurma - Narlı Toyuq Güveçi\nNar Govurma (pomegranate chicken stew)",price:"7.00 ₼",badge:""},
-      {name:"Nar Qovurma (Ət)",desc:"Nar Qovurma - Narlı Ət Güveçi\nNar Govurma (pomegranate meat stew)",price:"10.00 ₼",badge:""},
-      {name:"Tabaka (Kartofla)",desc:"Kartofla Toyuq Tabaka\nChicken Tabaka with Potatoes",price:"20.00 ₼",badge:""},
-      {name:"Səbzi Qovurma",desc:"Səbzi Plov\nSabzi Pilaf",price:"5.00 ₼",badge:""},
-    ]
-  },
-  et: {
-    label: "Ət Yeməkləri",
-    sub: "Main Meat Dishes",
-    items: [
-      {name:"Kupati",desc:"Kupaty Kolbasa\nKupaty Sausage",price:"15.00 ₼",badge:""},
-      {name:"Langet Toyuq",desc:"Toyuq Langet\nChicken Langet",price:"10.00 ₼",badge:""},
-      {name:"Langet Ət",desc:"Mal Əti Langet\nBeef Langet",price:"15.00 ₼",badge:""},
-      {name:"Çoban Qovurma",desc:"Çoban Ət Güveçi\nShepherd's Beef Stew",price:"13.00 ₼",badge:""},
-      {name:"Quzu Sacı",desc:"Quzu Sacı\nLamb Saj",price:"30.00 ₼",badge:""},
-      {name:"Toyuq Sacı",desc:"Toyuq Sacı\nChicken Saj",price:"25.00 ₼",badge:""},
-      {name:"Can Əti Sacı",desc:"Tenderloin Sacı\nTenderloin Saj",price:"35.00 ₼",badge:""},
-      {name:"Qarışıq Sac",desc:"Qarışıq Sac\nMixed Saj",price:"35.00 ₼",badge:""},
-    ]
-  },
-  xemir: {
-    label: "Xəmir Yeməkləri",
-    sub: "Dough / National Meals",
-    items: [
-      {name:"Sürhüllü (Qaxacla)",desc:"Sürhüllü - Qaxacla (qurudulmuş ətlə)\nSurhullu (with dried meat)",price:"12.00 ₼",badge:""},
-      {name:"Sürhüllü (Tözə Ətlə)",desc:"Sürhüllü - Tözə Ətlə (təzə ətlə)\nSurhullu (with fresh meat)",price:"10.00 ₼",badge:""},
-      {name:"Yarpaq Xəngəli",desc:"Yarpaq Xəngəli\nLeaf Khengel",price:"7.00 ₼",badge:""},
-      {name:"Gürcü Xəngəli",desc:"Gürcü Xəngəli (Bişmiş)\nGeorgian Khengel (boiled)",price:"1.20 ₼",badge:""},
-      {name:"Gürcü Xəngəli (Qızarmış)",desc:"Gürcü Xəngəli (Qızardılmış)\nGeorgian Khengel (fried)",price:"1.50 ₼",badge:""},
-      {name:"Girs",desc:"Ətlə | Şorla | Göyərtili\nGirs with meat | cheese | greens",price:"0.60 ₼",badge:""},
-      {name:"Girs Qızarmış",desc:"Ətlə Qızardılmış Girs\nGirs fried with meat",price:"0.80 ₼",badge:""},
-      {name:"Girs (Yumurtalı)",desc:"Yumurtalı Girs\nGirs with egg",price:"2.00 ₼",badge:""},
-      {name:"Qutab (Ətlə)",desc:"Ətli Qutab\nQutab with meat",price:"2.00 ₼",badge:""},
-      {name:"Qutab (Göyərtili)",desc:"Göyərtili Qutab\nQutab with greens",price:"2.00 ₼",badge:""},
-      {name:"Qutab (Şorla)",desc:"Şorlu Qutab\nQutab with cheese",price:"1.00 ₼",badge:""},
-    ]
-  },
-  kabablar: {
-    label: "Kabablar",
-    sub: "Kebabs",
-    items: [
-      {name:"Antrikot Kababi",desc:"Ribeye Quzu Kabab\nRibeye Lamb Kebab",price:"10.00 ₼",badge:""},
-      {name:"Dana Basdırması",desc:"Basdırma Dana Kabab\nBasturma Beef Kebab",price:"10.00 ₼",badge:""},
-      {name:"Lülə Kabab",desc:"Lülə Quzu Kabab\nLule Lamb Kebab",price:"8.00 ₼",badge:""},
-      {name:"Tikə Kabab",desc:"Tikə Quzu Kabab\nTike Lamb Kebab",price:"9.00 ₼",badge:""},
-      {name:"Ciyər Kababi",desc:"Ciyər Kabab\nLiver Kebab",price:"8.00 ₼",badge:""},
-      {name:"Ağ Ət Kababi",desc:"Quzu Delikates Kabab\nLamb Delicacy Kebab",price:"8.00 ₼",badge:""},
-      {name:"Toyuq Kababi",desc:"Toyuq Kabab\nChicken Kebab",price:"6.00 ₼",badge:""},
-      {name:"Toyuq Lüləsi",desc:"Lülə Toyuq Kabab\nLule Chicken Kebab",price:"7.00 ₼",badge:""},
-      {name:"Kartof (Quruqilə)",desc:"Quruq Piy ilə Kartof\nPotatoes With Lamb Tail Fat",price:"8.00 ₼",badge:""},
-      {name:"Hinduşka Kababi",desc:"Hinduşka Kabab\nTurkey Kebab",price:"10.00 ₼",badge:""},
-      {name:"Küllümə",desc:"Küllümə Kabab\nKulleme Kebab",price:"1.00 ₼",badge:""},
-      {name:"Tərəvəz Kababi",desc:"Tərəvəz Kabab\nVegetable Kebab",price:"5.00 ₼",badge:"veg"},
-    ]
-  }
+  seher:{label:"Səhər Yeməyi",sub:"Breakfast",items:[
+    {name:"Təbii Dağ Balı",az:"Ev hazırlanmış Təbii Bal (50 QR.)",en:"Homemade Natural Honey",price:"5.00 ₼",badge:""},
+    {name:"Kərə Yağı",az:"Ev hazırlanmış Kərə Yağı 50 gr.",en:"Homemade Natural Butter 50 gr.",price:"3.00 ₼",badge:""},
+    {name:"Pendir",az:"Təbii Pendir",en:"Natural Cheese",price:"3.00 ₼",badge:""},
+    {name:"Qarışıq Pendir",az:"Müxtəlif növ pendirlər",en:"Assorted Cheese",price:"6.00 ₼",badge:""},
+    {name:"Ev Qaymağı",az:"Ev hazırlanmış Qaymaq (50 QR.)",en:"Homemade Clotted Cream",price:"3.00 ₼",badge:""},
+    {name:"Kənd Şoru",az:"Ev hazırlanmış Lor Pendiri",en:"Homemade Curd Cheese",price:"2.00 ₼",badge:""},
+    {name:"Soyutma Yumurta",az:"Bişmiş Yumurta",en:"Boiled Egg",price:"1.00 ₼",badge:""},
+    {name:"\"Qlazok\" Yumurta",az:"Qızardılmış Yumurta",en:"Fried Egg",price:"2.00 ₼",badge:""},
+    {name:"Pomidor Yumurta",az:"Pomidor və Yumurta",en:"Tomato & Egg",price:"5.00 ₼",badge:""},
+    {name:"Sosis Yumurta",az:"Sosis ilə Yumurta",en:"Egg with Sausage",price:"5.00 ₼",badge:""},
+    {name:"Sosis Manqal Üstü",az:"Manqalda bişirilmiş sosis",en:"Grilled Sausage",price:"4.00 ₼",badge:""},
+    {name:"Yulaf Sıyığı",az:"Yulaf Sıyığı (Kaşa)",en:"Oat Porridge",price:"4.00 ₼",badge:""},
+  ]},
+  salatlar:{label:"Salatlar",sub:"Salads",items:[
+    {name:"Döymə Zoğal",az:"Döyülmüş Zoğal",en:"Crushed Cornelian Cherry",price:"4.00 ₼",badge:""},
+    {name:"Döymə Vişnə",az:"Döyülmüş Turş Albalı",en:"Crushed Sour Cherry Relish",price:"5.00 ₼",badge:""},
+    {name:"Qarğıdalı Salatı",az:"Qarğıdalı Salatı",en:"Corn Salad",price:"6.00 ₼",badge:""},
+    {name:"Yunan Salatı",az:"Yunan Salatı",en:"Greek Salad",price:"6.00 ₼",badge:""},
+    {name:"Zeytun Salatı",az:"Zeytun Salatı",en:"Olive Salad",price:"5.00 ₼",badge:""},
+    {name:"Malibu Salatı",az:"Malibu Salatı",en:"Malibu Salad",price:"7.00 ₼",badge:""},
+    {name:"Cacıq",az:"Cacıq",en:"Cacik",price:"4.00 ₼",badge:""},
+    {name:"\"Paytaxt\" Salatı",az:"Rus Salatı \"Stolichniy\"",en:"Russian Salad \"Stolichniy\"",price:"4.00 ₼",badge:"Xüsusi"},
+    {name:"\"Mimoza\" Salatı",az:"Rus Salatı \"Mimoza\"",en:"Russian Salad \"Mimoza\"",price:"4.00 ₼",badge:"Xüsusi"},
+    {name:"\"Şuba\" Salatı",az:"Rus Salatı \"Şuba\"",en:"Russian Salad \"Shuba\"",price:"5.00 ₼",badge:"Xüsusi"},
+    {name:"Düma Salatı",az:"Düma Salatı",en:"Duma Salad",price:"5.00 ₼",badge:"Xüsusi"},
+  ]},
+  suplar:{label:"Suplar",sub:"Soups",items:[
+    {name:"Mərci",az:"Mərcimək Şorbası",en:"Lentil Soup",price:"4.00 ₼",badge:""},
+    {name:"Toyuq Supu",az:"Toyuq Şorbası",en:"Chicken Soup",price:"5.00 ₼",badge:""},
+    {name:"Borş",az:"Borş Şorbası",en:"Borscht",price:"5.00 ₼",badge:""},
+    {name:"Düşbərə",az:"Düşbərə",en:"Dushbora",price:"5.00 ₼",badge:""},
+    {name:"Lobya Supu",az:"Qaxacla Lobya Şorbası",en:"Bean Soup (with dried meat)",price:"7.00 ₼",badge:""},
+    {name:"Xarco",az:"Xarco Şorbası",en:"Kharcho Soup",price:"8.00 ₼",badge:""},
+    {name:"Dovğa",az:"Dovğa",en:"Dovga",price:"2.50 ₼",badge:""},
+  ]},
+  qarnirler:{label:"Qarnilər",sub:"Side Dishes",items:[
+    {name:"Düyü",az:"Düyü",en:"Rice",price:"3.00 ₼",badge:""},
+    {name:"Qreçka",az:"Qarabaşaq Püresi",en:"Buckwheat Porridge",price:"2.00 ₼",badge:""},
+    {name:"Kartof",az:"Qızartma / Püre",en:"French Fries / Mashed Potatoes",price:"4.00 ₼",badge:""},
+    {name:"Spagetti",az:"Spagetti",en:"Spaghetti",price:"4.00 ₼",badge:""},
+    {name:"Qarabaşaq",az:"Bişmiş Qarabaşaq",en:"Boiled Buckwheat",price:"3.00 ₼",badge:""},
+  ]},
+  qazan:{label:"Qazan Yeməkləri",sub:"Traditional Pot Meals",items:[
+    {name:"Piti",az:"Piti",en:"Piti",price:"8.00 ₼",badge:""},
+    {name:"Buğlama",az:"Buğlama",en:"Bughlama",price:"7.00 ₼",badge:""},
+    {name:"Dopu Dolma",az:"Qazanda Dolma",en:"Dolma in Pot",price:"7.00 ₼",badge:""},
+    {name:"\"Tuşonka\"",az:"Mal Ətindən Konserv Şəklində Bişirilmiş",en:"Canned Stewed Meat",price:"9.00 ₼",badge:""},
+    {name:"Ciz-Biz Quzu",az:"Quzunun Qovrulması",en:"Sizzling Lamb Fry",price:"8.00 ₼",badge:""},
+    {name:"Qaymaqlı Toyuq",az:"Qaymaq Sousunda Toyuq",en:"Chicken in Cream Sauce",price:"7.00 ₼",badge:""},
+    {name:"Qaymaqlı Can Əti",az:"Qaymaq Sousunda Tenderloin",en:"Tenderloin in Cream Sauce",price:"6.00 ₼",badge:""},
+    {name:"Tava Kababi",az:"Tava Kabab",en:"Pan Kebab",price:"6.00 ₼",badge:""},
+    {name:"Nar Qovurma (Toyuq)",az:"Narlı Toyuq Güveçi",en:"Pomegranate Chicken Stew",price:"7.00 ₼",badge:""},
+    {name:"Nar Qovurma (Ət)",az:"Narlı Ət Güveçi",en:"Pomegranate Meat Stew",price:"10.00 ₼",badge:""},
+    {name:"Tabaka (Kartofla)",az:"Kartofla Toyuq Tabaka",en:"Chicken Tabaka with Potatoes",price:"20.00 ₼",badge:""},
+    {name:"Səbzi Qovurma",az:"Səbzi Plov",en:"Sabzi Pilaf",price:"5.00 ₼",badge:""},
+  ]},
+  et:{label:"Ət Yeməkləri",sub:"Main Meat Dishes",items:[
+    {name:"Kupati",az:"Kupaty Kolbasa",en:"Kupaty Sausage",price:"15.00 ₼",badge:""},
+    {name:"Langet Toyuq",az:"Toyuq Langet",en:"Chicken Langet",price:"10.00 ₼",badge:""},
+    {name:"Langet Ət",az:"Mal Əti Langet",en:"Beef Langet",price:"15.00 ₼",badge:""},
+    {name:"Çoban Qovurma",az:"Çoban Ət Güveçi",en:"Shepherd's Beef Stew",price:"13.00 ₼",badge:""},
+    {name:"Quzu Sacı",az:"Quzu Sacı",en:"Lamb Saj",price:"30.00 ₼",badge:""},
+    {name:"Toyuq Sacı",az:"Toyuq Sacı",en:"Chicken Saj",price:"25.00 ₼",badge:""},
+    {name:"Can Əti Sacı",az:"Tenderloin Sacı",en:"Tenderloin Saj",price:"35.00 ₼",badge:""},
+    {name:"Qarışıq Sac",az:"Qarışıq Sac",en:"Mixed Saj",price:"35.00 ₼",badge:""},
+  ]},
+  xemir:{label:"Xəmir Yeməkləri",sub:"Dough / National Meals",items:[
+    {name:"Sürhüllü (Qaxacla)",az:"Qurudulmuş ətlə",en:"Surhullu with dried meat",price:"12.00 ₼",badge:""},
+    {name:"Sürhüllü (Tözə Ətlə)",az:"Təzə ətlə",en:"Surhullu with fresh meat",price:"10.00 ₼",badge:""},
+    {name:"Yarpaq Xəngəli",az:"Yarpaq Xəngəli",en:"Leaf Khengel",price:"7.00 ₼",badge:""},
+    {name:"Gürcü Xəngəli",az:"Gürcü Xəngəli (Bişmiş)",en:"Georgian Khengel (boiled)",price:"1.20 ₼",badge:""},
+    {name:"Gürcü Xəngəli (Qızarmış)",az:"Gürcü Xəngəli (Qızardılmış)",en:"Georgian Khengel (fried)",price:"1.50 ₼",badge:""},
+    {name:"Girs",az:"Ətlə | Şorla | Göyərtili",en:"Girs with meat / cheese / greens",price:"0.60 ₼",badge:""},
+    {name:"Girs Qızarmış",az:"Ətlə Qızardılmış Girs",en:"Girs fried with meat",price:"0.80 ₼",badge:""},
+    {name:"Girs (Yumurtalı)",az:"Yumurtalı Girs",en:"Girs with egg",price:"2.00 ₼",badge:""},
+    {name:"Qutab (Ətlə)",az:"Ətli Qutab",en:"Qutab with meat",price:"2.00 ₼",badge:""},
+    {name:"Qutab (Göyərtili)",az:"Göyərtili Qutab",en:"Qutab with greens",price:"2.00 ₼",badge:""},
+    {name:"Qutab (Şorla)",az:"Şorlu Qutab",en:"Qutab with cheese",price:"1.00 ₼",badge:""},
+  ]},
+  kabablar:{label:"Kabablar",sub:"Kebabs",items:[
+    {name:"Antrikot Kababi",az:"Ribeye Quzu Kabab",en:"Ribeye Lamb Kebab",price:"10.00 ₼",badge:""},
+    {name:"Dana Basdırması",az:"Basdırma Dana Kabab",en:"Basturma Beef Kebab",price:"10.00 ₼",badge:""},
+    {name:"Lülə Kabab",az:"Lülə Quzu Kabab",en:"Lule Lamb Kebab",price:"8.00 ₼",badge:""},
+    {name:"Tikə Kabab",az:"Tikə Quzu Kabab",en:"Tike Lamb Kebab",price:"9.00 ₼",badge:""},
+    {name:"Ciyər Kababi",az:"Ciyər Kabab",en:"Liver Kebab",price:"8.00 ₼",badge:""},
+    {name:"Ağ Ət Kababi",az:"Quzu Delikates Kabab",en:"Lamb Delicacy Kebab",price:"8.00 ₼",badge:""},
+    {name:"Toyuq Kababi",az:"Toyuq Kabab",en:"Chicken Kebab",price:"6.00 ₼",badge:""},
+    {name:"Toyuq Lüləsi",az:"Lülə Toyuq Kabab",en:"Lule Chicken Kebab",price:"7.00 ₼",badge:""},
+    {name:"Kartof (Quruqilə)",az:"Quruq Piy ilə Kartof",en:"Potatoes With Lamb Tail Fat",price:"8.00 ₼",badge:""},
+    {name:"Hinduşka Kababi",az:"Hinduşka Kabab",en:"Turkey Kebab",price:"10.00 ₼",badge:""},
+    {name:"Küllümə",az:"Küllümə Kabab",en:"Kulleme Kebab",price:"1.00 ₼",badge:""},
+    {name:"Tərəvəz Kababi",az:"Tərəvəz Kabab",en:"Vegetable Kebab",price:"5.00 ₼",badge:"veg"},
+  ]}
 };
 
-// ============================================================
-// RENDER CARDS
-// ============================================================
-function createCard(item, sectionKey) {
-  const card = document.createElement('article');
-  card.className = 'menu-card';
-  card.setAttribute('role','button');
-  card.setAttribute('tabindex','0');
-  card.setAttribute('aria-label', item.name);
+/* ── RENDER MENU ROW ────────────────────────────── */
+function createRow(item, catLabel) {
+  const row = document.createElement('article');
+  row.className = 'menu-row';
+  row.setAttribute('role', 'button');
+  row.setAttribute('tabindex', '0');
+  row.setAttribute('aria-label', item.name);
 
   let badgeHTML = '';
-  if(item.badge === 'Xüsusi') badgeHTML = `<span class="card-badge badge-special">Xüsusi</span>`;
-  else if(item.badge === 'veg') badgeHTML = `<span class="card-badge badge-veg">Veg</span>`;
+  if (item.badge === 'Xüsusi') badgeHTML = '<span class="row-badge badge-special">Xüsusi</span>';
+  else if (item.badge === 'veg') badgeHTML = '<span class="row-badge badge-veg">Veg</span>';
 
-  card.innerHTML = `
-    <div class="card-img-wrap">
-      <img src="${FOOD_IMG}" alt="${item.name}" loading="lazy" decoding="async" />
-      ${badgeHTML}
-    </div>
-    <div class="card-body">
-      <div class="card-name">${item.name}</div>
-      <div class="card-desc">${item.desc.split('\n')[1] || item.desc.split('\n')[0]}</div>
-      <div class="card-footer">
-        <span class="card-price">${item.price}</span>
-        <button class="card-btn" tabindex="-1">Ətraflı</button>
-      </div>
-    </div>`;
+  row.innerHTML =
+    '<div class="menu-row-img">' +
+      '<img src="' + FOOD_IMG + '" alt="' + item.name + '" width="72" height="56" loading="lazy" decoding="async" />' +
+    '</div>' +
+    '<div class="menu-row-body">' +
+      '<div class="menu-row-name">' + item.name + '</div>' +
+      '<div class="menu-row-desc">' + item.en + '</div>' +
+    '</div>' +
+    '<div class="menu-row-right">' +
+      '<div class="menu-row-price">' + item.price + '</div>' +
+      (badgeHTML ? '<div>' + badgeHTML + '</div>' : '') +
+    '</div>';
 
-  const open = () => openModal(item, sectionKey);
-  card.addEventListener('click', open);
-  card.addEventListener('keydown', e => { if(e.key==='Enter'||e.key===' ') open(); });
-  return card;
+  const open = function() { openModal(item, catLabel); };
+  row.addEventListener('click', open);
+  row.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); }
+  });
+  return row;
 }
 
 function renderSection(key, gridId) {
-  const data = MENU[key];
-  if(!data) return;
-  const grid = document.getElementById(gridId);
-  if(!grid) return;
-  const frag = document.createDocumentFragment();
-  data.items.forEach(item => frag.appendChild(createCard(item, data.label)));
+  var data = MENU[key];
+  if (!data) return;
+  var grid = document.getElementById(gridId);
+  if (!grid || grid.children.length > 0) return;
+  var frag = document.createDocumentFragment();
+  data.items.forEach(function(item) { frag.appendChild(createRow(item, data.label)); });
   grid.appendChild(frag);
 }
 
-// ============================================================
-// HOME GRID — show all items
-// ============================================================
-function renderHome() {
-  const grid = document.getElementById('home-grid');
-  if(!grid || grid.children.length > 0) return;
-  const frag = document.createDocumentFragment();
-  Object.keys(MENU).forEach(key => {
-    const data = MENU[key];
-    data.items.forEach(item => frag.appendChild(createCard(item, data.label)));
+/* ── HOME CATEGORY BUTTONS ──────────────────────── */
+(function buildHomeCats() {
+  var container = document.getElementById('heroCats');
+  if (!container) return;
+  var frag = document.createDocumentFragment();
+  Object.keys(MENU).forEach(function(key) {
+    var btn = document.createElement('button');
+    btn.className = 'hero-cat-btn';
+    btn.textContent = MENU[key].label;
+    btn.addEventListener('click', function() { showSection(key); });
+    frag.appendChild(btn);
   });
-  grid.appendChild(frag);
-}
+  container.appendChild(frag);
+})();
 
-// ============================================================
-// MODAL
-// ============================================================
-const overlay = document.getElementById('modalOverlay');
-const modalImg = document.getElementById('modalImg');
-const modalCat = document.getElementById('modalCat');
-const modalName = document.getElementById('modalName');
-const modalDesc = document.getElementById('modalDesc');
-const modalPrice = document.getElementById('modalPrice');
+/* ── MODAL ──────────────────────────────────────── */
+var overlay    = document.getElementById('modalOverlay');
+var modalImg   = document.getElementById('modalImg');
+var modalCat   = document.getElementById('modalCat');
+var modalName  = document.getElementById('modalName');
+var modalDesc  = document.getElementById('modalDesc');
+var modalPrice = document.getElementById('modalPrice');
 
 function openModal(item, catLabel) {
-  modalImg.src = FOOD_IMG;
-  modalImg.alt = item.name;
-  modalCat.textContent = catLabel;
-  modalName.textContent = item.name;
-  modalDesc.innerHTML = item.desc.split('\n').join('<br>');
+  modalImg.src   = FOOD_IMG;
+  modalImg.alt   = item.name;
+  modalCat.textContent   = catLabel;
+  modalName.textContent  = item.name;
+  modalDesc.innerHTML    = item.az + '<br><span style="opacity:.7">' + item.en + '</span>';
   modalPrice.textContent = item.price;
   overlay.classList.add('open');
   document.body.style.overflow = 'hidden';
@@ -650,54 +666,48 @@ function closeModal() {
 }
 
 document.getElementById('modalClose').addEventListener('click', closeModal);
-overlay.addEventListener('click', e => { if(e.target === overlay) closeModal(); });
-document.addEventListener('keydown', e => { if(e.key==='Escape') closeModal(); });
+overlay.addEventListener('click', function(e) { if (e.target === overlay) closeModal(); });
+document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
 
-// ============================================================
-// SECTION NAVIGATION — NO URL CHANGE
-// ============================================================
-let currentSection = 'home';
-const renderedSections = new Set(['home']);
+/* ── NAVIGATION ─────────────────────────────────── */
+var currentSection = 'home';
+var rendered = {home: true};
+
+var gridMap = {
+  seher:'grid-seher', salatlar:'grid-salatlar',
+  suplar:'grid-suplar', qarnirler:'grid-qarnirler',
+  qazan:'grid-qazan', et:'grid-et',
+  xemir:'grid-xemir', kabablar:'grid-kabablar'
+};
 
 function showSection(key) {
-  if(currentSection === key) return;
+  if (currentSection === key) return;
 
-  // Hide current
-  document.getElementById('panel-'+currentSection).classList.remove('active');
-  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('panel-' + currentSection).classList.remove('active');
+  document.querySelectorAll('.nav-tab').forEach(function(t) {
+    t.classList.remove('active');
+    t.setAttribute('aria-selected', 'false');
+  });
 
-  // Show new
   currentSection = key;
-  document.getElementById('panel-'+key).classList.add('active');
-  document.querySelectorAll(`[data-section="${key}"]`).forEach(t => t.classList.add('active'));
+  document.getElementById('panel-' + key).classList.add('active');
+  document.querySelectorAll('[data-section="' + key + '"]').forEach(function(t) {
+    t.classList.add('active');
+    t.setAttribute('aria-selected', 'true');
+  });
 
-  // Lazy render
-  if(!renderedSections.has(key)) {
-    renderedSections.add(key);
-    const gridMap = {
-      seher:'grid-seher', salatlar:'grid-salatlar',
-      suplar:'grid-suplar', qarnirler:'grid-qarnirler',
-      qazan:'grid-qazan', et:'grid-et',
-      xemir:'grid-xemir', kabablar:'grid-kabablar'
-    };
-    if(key === 'home') renderHome();
-    else if(gridMap[key]) renderSection(key, gridMap[key]);
+  if (!rendered[key]) {
+    rendered[key] = true;
+    if (gridMap[key]) renderSection(key, gridMap[key]);
   }
 
-  // Scroll to top of content
-  window.scrollTo({top:0,behavior:'instant'});
+  window.scrollTo({top: 0, behavior: 'instant'});
 }
 
-// Tab click listeners
-document.getElementById('navTabs').addEventListener('click', e => {
-  const tab = e.target.closest('.nav-tab');
-  if(tab) showSection(tab.dataset.section);
+document.getElementById('navTabs').addEventListener('click', function(e) {
+  var tab = e.target.closest('.nav-tab');
+  if (tab) showSection(tab.dataset.section);
 });
-
-// ============================================================
-// INIT — render home section
-// ============================================================
-renderHome();
 </script>
 </body>
 </html>
